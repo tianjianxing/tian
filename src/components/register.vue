@@ -31,7 +31,8 @@ export default {
 	},
 	methods:{
 		reg(){
-			if(this.phone!=""&&this.pwd!=""&&this.pwd==this.pwds){
+			var ss = /^1[3-9]\d{9}$/g;
+			if(this.phone!=""&&this.pwd!=""&&this.pwd==this.pwds&&this.phone.match(ss)){
 				for(var i=0;i<localStorage.length;i++){
 					if(this.phone==localStorage.key(i)){
 						return alert("已经被注册了")
@@ -41,7 +42,7 @@ export default {
 				location.href="#/notice"
 			}
 			else{
-				alert("请至少填写手机号和密码及确认密码")
+				alert("请确认手机号规则且至少填写手机号和密码及确认密码")
 			}
 		}
 	}
